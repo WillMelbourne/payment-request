@@ -28,11 +28,14 @@
                     paymentDetails,
                     options
                 );
+                payButton.onclick = function() {
+                    request.show();
+                }​;
             } else {
                 payButton.setAttribute("disabled", "");
                 payButton.innerHTML = "Not supported on this browser";
             }
         </script>
-        <button id="pay-button" onclick="request.show()">Payment demo</button>
+        <button id="pay-button">Payment demo</button>
     </body>
 </html>
