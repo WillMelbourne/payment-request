@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <title>Payment request API demo</title>
+    </head>
+    <body>
+        <button id="pay-button" onclick="request.show()">Payment demo</button>
+        <script>
+            var payButton = document.getElementById("pay-button");
+            if(window.PaymentRequest) {
+                const supportedPaymentMethods = [
+                    {
+                        supportedMethods: ["basic-card"],
+                    }
+                ];
+                const paymentDetails = {
+                    total: {
+                        label: "Total",
+                        amount:{
+                            currency: "GBP",
+                            value: 0
+                        }
+                    }
+                };
+                const options = {};
+                new PaymentRequest(
+                    supportedPaymentMethods,
+                    paymentDetails,
+                    options
+                );
+            } else {
+                payButton.setAttribute("disabled", "");
+                payButton.innerHTML = "Not supported on this browser";
+            }
+        </script>
+    </body>
+</html>
